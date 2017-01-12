@@ -15,29 +15,33 @@ angular.module('myPeeps.peeps', ['ngRoute', 'firebase'])
  var fb2url='https://peeps-a49af.firebaseio.com/peeps';  // new
  var ref = new Firebase(fb2url);
 
+      $scope.msg = null;
  $scope.peeps = $firebaseArray(ref);
+ console.log("peeps : "+JSON.stringify($scope.peeps));
 
  // Show Add Form
- 	$scope.showAddForm = function(){
+ $scope.showAddForm = function(){
  		$scope.addFormShow = true;
-    $scope.peepShowIntro = true;
- 	}
+    //$scope.peepShowIntro = true;
+ }
 
   // Show Edit Form
   	$scope.showEditForm = function(peep){
   		$scope.editFormShow = true;
-      $scope.peepShowIntro = true;
-      $scope.peepShow = true;
+      //$scope.peepShowIntro = true;
+      $scope.peepShow = false;
       $scope.actions = true;
       // $scope.peepHide = true;
 
-      $scope.$id			    = peep.$id;
+      console.log("showEditForm peep.$id = ",peep.$id);
+
+      $scope.id			    = peep.$id;
       $scope.name 			= peep.name;
       $scope.email 			= peep.email;
       $scope.company 			= peep.company;
-      $scope.work_phone 		= peep.phones[0].work;
-      $scope.home_phone 		= peep.phones[0].home;
-      $scope.mobile_phone 	= peep.phones[0].mobile;
+      $scope.work_phone 		= peep.phones[0].work_phone;
+      $scope.home_phone 		= peep.phones[0].home_phone;
+      $scope.mobile_phone 	= peep.phones[0].mobile_phone;
       $scope.street_address 	= peep.address[0].street_address;
       $scope.city 			= peep.address[0].city;
       $scope.state 			= peep.address[0].state;
@@ -45,13 +49,13 @@ angular.module('myPeeps.peeps', ['ngRoute', 'firebase'])
 
   	}
 
-
  	// Hide Forms
  	$scope.hide = function(){
  		$scope.addFormShow = false;
     $scope.editFormShow = false;
     $scope.actions = false;
     $scope.peepShow = false;
+    $scope.msg = null;
  	}
   //Submit Peep
   $scope.addFormSubmit = function() {
@@ -106,6 +110,7 @@ angular.module('myPeeps.peeps', ['ngRoute', 'firebase'])
 
 		// Get ID
 		var id = $scope.id;
+		console.log("editFormSubmit id = ",$scope.id);
 
 		// Get Record
 		var record = $scope.peeps.$getRecord(id);
@@ -115,15 +120,15 @@ angular.module('myPeeps.peeps', ['ngRoute', 'firebase'])
 		record.name 						= $scope.name;
 		record.email 						= $scope.email;
 		record.company 						= $scope.company;
-		record.phones[0].work 				= $scope.work_phone;
-		record.phones[0].home 				= $scope.home_phone;
-		record.phones[0].mobile 			= $scope.mobile_phone;
+		record.phones[0].work_phone 				= $scope.work_phone;
+		record.phones[0].home_phone 				= $scope.work_phone;
+		record.phones[0].mobile_phone 			= $scope.mobile_phone;
 		record.address[0].street_address 	= $scope.street_address;
 		record.address[0].city 				= $scope.city;
 		record.address[0].state 			= $scope.state;
 		record.address[0].zipcode 			= $scope.zipcode;
 
-		// Save Conrtact
+		// Save Peep
 		$scope.peeps.$save(record).then(function(ref){
 			console.log(ref.key);
 		});
@@ -143,18 +148,15 @@ angular.module('myPeeps.peeps', ['ngRoute', 'firebase'])
     $scope.name = peep.name;
     $scope.email = peep.email;
     $scope.company = peep.company;
-    $scope.mobile_phone = peep.phones[0].work;
-    $scope.home_phone = peep.phones[0].home;
-    $scope.work_phone = peep.phones[0].mobile;
-    $scope.street_adress = peep.address[0].street_address;
+    $scope.mobile_phone = peep.phones[0].mobile_phone;
+    $scope.home_phone = peep.phones[0].home_phone;
+    $scope.work_phone = peep.phones[0].work_phone;
+    $scope.street_address = peep.address[0].street_address;
     $scope.city = peep.address[0].city;
     $scope.state = peep.address[0].state;
     $scope.zipcode = peep.address[0].zipcode;
 
-
     $scope.peepShow = true;
-
-
   }
 
   $scope.removePeep = function(peep){
@@ -174,7 +176,7 @@ angular.module('myPeeps.peeps', ['ngRoute', 'firebase'])
     $scope.mobile_phone = '';
     $scope.home_phone = '';
     $scope.work_phone = '';
-    $scope.street_adress = '';
+    $scope.street_address = '';
     $scope.city = '';
     $scope.state = '';
     $scope.zipcode = '';
