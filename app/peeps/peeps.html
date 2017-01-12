@@ -1,16 +1,37 @@
 <div class="row">
   <div class="small-12 medium-12 columns">
-    <div data-alert ng-show="msg" class="alert-box success">{{msg}}</div>
+    <div data-alert ng-show="msg" ng-click="hide()" class="alert-box success">{{msg}}</div>
   </div>
 </div>
 <div class="row">
-  <div class="small-12 medium-4 columns">
-    <h3>MY PEEPS ({{peeps.length}})</h3>
+  <div class="small-12 large-10 columns">
+    <h3>My Peeps ({{peeps.length}})</h3>
   </div>
-  <div class="medium-2 medium-pull-7 columns">
-    <a class="button tiny" ng-click="showAddForm()" ng-hide="addFormShow">Add New +</a>
+  <div class="small-12 large-1 columns">
+    <a class="button tiny" ng-click="showAddForm()" ng-hide="addFormShow">New</a>
     <a class="button alert tiny" ng-click="hide()" ng-show="addFormShow">Cancel</a>
   </div>
+  <div class="small-12 large-1 columns">
+      <a class="button alert tiny" ng-click="hide()" ng-show="peepShow">Close</a>
+  </div>
+</div>
+
+<!-- Show Contact -->
+<div class="row ng-hide" ng-show="peepShow">
+	<div class="large-8 columns">
+		<h3 >{{name}}</h3>
+		<ul>
+			<li ><strong>Company</strong>: {{company}}</li>
+			<li ><strong>Email Address</strong>: {{email}}</li>
+			<h5>Phone Numbers</h5>
+			<li ><strong>Work</strong>: {{work_phone}}</li>
+			<li ><strong>Home</strong>: {{home_phone}}</li>
+			<li ><strong>Mobile</strong>: {{mobile_phone}}</li>
+			<h5>Location Info</h5>
+			<li >{{street_address}}</li>
+			<li >{{city}}, {{state}} {{zipcode}}</li>
+		</ul>
+	</div>
 </div>
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -159,20 +180,42 @@
             </div>
             <div class="row">
               <div class="small-12 large-12 columns">
-                <input type="submit" value="Update Peep" class="button small" />
+                <input type="submit" value="Update" class="button small" />
                 <input ng-click="hide()" type="submit" value="Cancel" class="button alert small" />
               </div>
             </div>
           </form>
         </div>
       </div>
-  <div class="row">
-    <div ng-repeat="peep in peeps" class="medium-6 columns">
+
+<div class="row">
+   <div class="large-12 columns">
+      <table width="100%" class="card">
+      <thead>
+        <tr>
+          <th width="25%">Name</th>
+          <th width="25%">Company</th>
+          <th width="25%;">Email</th>
+          <th width="25%;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngRepeat: contact in contacts --><tr ng-repeat="peep in peeps">
+		<td><a ng-click="showPeep(peep)" >{{peep.name}}</a></td>
+		<td >{{peep.company}}</td>
+		<td >{{peep.email}}</td>
+          <td><a class="button tiny" ng-click="showEditForm(peep)">Edit</a>
+            <a class="button tiny alert" ng-click="removePeep(peep)">Delete</a></td>
+          </tr><!-- end ngRepeat: contact in contacts -->
+        </tbody>
+      </table>
+    </div>
+  </div>
       <!--
       \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
       \\\\\\\\\\\\\\\\\\ Existing Cards \\\\\\\\\\\\\\\\\\\\\\
       \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    -->
+    -
     <div class="card">
       <div class="content">
         <span class="title">
@@ -201,4 +244,5 @@
         <a class="small alert button" ng-click="removePeep(peep)">Delete Peep</a>
       </div>
     </div>
+    -->
   </div>
