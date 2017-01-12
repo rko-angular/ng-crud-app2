@@ -2,3 +2,5 @@ node_modules/
 
 *.xml~
 bower_components
+*.swp
+*.html~
