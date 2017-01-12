@@ -1,17 +1,26 @@
 Angular1 / Firebase2 CRUD ( Not a TODO ) App
 
-page:  
+original page:  
 http://jacobnlangley.com/angular/2016/05/03/angular-crud-app.html
 
 Live demo:  
-http://jacobnlangley.bitbucket.org/ng-crud-app/
+~~http://jacobnlangley.bitbucket.org/ng-crud-app/~~
+https://peeps-a49af.firebaseapp.com
 
-to run:
+to run locally:
 ```
 npm start
 ```
 
-to unit test:
+to run unit tests:
+```
+```
 
-e2e test:
+to ruun e2e tests:
+```
+```
+
+Released under the [MIT License] (http://opensource.org/licenses/MIT)
+Copyright (c) 2017 [RKO Security] (http://www.rkosecurity.com)
+
 
