@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="large-12 columns">
+      <div data-alert ng-show="msg" class="alert-box">{{msg}}</div>
+  </div>
+</div>
+<form ng-submit="addFormSubmit()" ng-show="addFormShow">
+  		<!-- Add Form -->
+      <div class="row">
+		    <div class="large-12 columns">
+          <h3>Add New Peep</h3>
+        </div>
+      </div>
+  		<div class="row">
+		    <div class="small-12 medium-6 columns">
+		      <label>Name:
+		        <input type="text" ng-model="name" placeholder="Contact Name" required />
+		      </label>
+		    </div>
+		    <div class="small-12 medium-6 columns">
+		      <label>Email:
+		        <input type="text" ng-model="email" placeholder="Contact Email" required />
+		      </label>
+		    </div>
+		 </div>
+		 <div class="row">
+		    <div class="small-12 medium-6 columns">
+		      <label>Company:
+		        <input type="text" ng-model="company" placeholder="Company Name" />
+		      </label>
+		    </div>
+		    <div class="small-12 medium-6 columns">
+		      <label>Work Phone:
+		        <input type="text" ng-model="work_phone" placeholder="Work Phone" />
+		      </label>
+		    </div>
+		 </div>
+		 <div class="row">
+		    <div class="small-12 medium-6 columns">
+		      <label>Mobile Phone:
+		        <input type="text" ng-model="mobile_phone" placeholder="Mobile Phone" />
+		      </label>
+		    </div>
+		    <div class="small-12 medium-6 columns">
+		      <label>Home Phone:
+		        <input type="text" ng-model="home_phone" placeholder="Home Phone" />
+		      </label>
+		    </div>
+		 </div>
+		 <div class="row">
+		    <div class="small-12 medium-6 columns">
+		      <label>Street Address:
+		        <input type="text" ng-model="street_address" placeholder="Street Address" />
+		      </label>
+		    </div>
+		    <div class="small-12 medium-6 columns">
+		      <label>City:
+		        <input type="text" ng-model="city" placeholder="City" />
+		      </label>
+		    </div>
+		 </div>
+		 <div class="row">
+		    <div class="small-12 medium-6 columns">
+		      <label>State:
+		        <input type="text" ng-model="state" placeholder="State" />
+		      </label>
+		    </div>
+		    <div class="small-12 medium-6 columns">
+		      <label>Zip Code:
+		        <input type="text" ng-model="zipcode" placeholder="Zip Code" />
+		      </label>
+		    </div>
+		 </div>
+		 <div class="row">
+		    <div class="large-12 columns">
+		        <input type="submit" value="Add Peep" class="button" />
+		    </div>
+		 </div>
+	</form>

@@ -1,0 +1,204 @@
+<div class="row">
+  <div class="small-12 medium-12 columns">
+    <div data-alert ng-show="msg" class="alert-box success">{{msg}}</div>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 medium-4 columns">
+    <h3>MY PEEPS ({{peeps.length}})</h3>
+  </div>
+  <div class="medium-2 medium-pull-7 columns">
+    <a class="button tiny" ng-click="showAddForm()" ng-hide="addFormShow">Add New +</a>
+    <a class="button alert tiny" ng-click="hide()" ng-show="addFormShow">Cancel</a>
+  </div>
+</div>
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\ ADD PEEP FORM \\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->
+  <div class="row">
+    <div class="medium-12 columns">
+          <form ng-submit="addFormSubmit()" ng-show="addFormShow">
+            <!-- Add Form -->
+            <div class="row">
+              <div class="large-12 columns">
+                <h3>Add New Peep</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>Name:
+                  <input type="text" ng-model="name" placeholder="Peep Name" required />
+                </label>
+              </div>
+              <div class="small-12 medium-6 columns">
+                <label>Email:
+                  <input type="text" ng-model="email" placeholder="Peep Email" required />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>Company:
+                  <input type="text" ng-model="company" placeholder="Company Name" />
+                </label>
+              </div>
+              <div class="small-12 medium-6 columns">
+                <label>Work Phone:
+                  <input type="text" ng-model="work_phone" placeholder="Work Phone" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>Mobile Phone:
+                  <input type="text" ng-model="mobile_phone" placeholder="Mobile Phone" />
+                </label>
+              </div>
+              <div class="small-12 medium-6 columns">
+                <label>Home Phone:
+                  <input type="text" ng-model="home_phone" placeholder="Home Phone" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>Street Address:
+                  <input type="text" ng-model="street_address" placeholder="Street Address" />
+                </label>
+              </div>
+              <div class="small-12 medium-6 columns">
+                <label>City:
+                  <input type="text" ng-model="city" placeholder="City" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>State:
+                  <input type="text" ng-model="state" placeholder="State" />
+                </label>
+              </div>
+              <div class="small-12 medium-6 columns">
+                <label>Zip Code:
+                  <input type="text" ng-model="zipcode" placeholder="Zip Code" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <input type="submit" value="Add Peep" class="button" />
+              </div>
+            </div>
+          </form>
+      <!--
+      \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+      \\\\\\\\\\\\\\\\\\ EDIT PEEP FORM \\\\\\\\\\\\\\\\\\\\\\
+      \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    -->
+        <form ng-submit="editFormSubmit()" ng-show="editFormShow">
+          <!-- Edit Form -->
+          <div class="row">
+            <div class="small-12 medium-12 columns">
+            <div class="row">
+              <div class="small-12 medium-4 columns">
+                <label>Name:
+                  <input type="text" ng-model="name" placeholder="{{record.name}}" required />
+                </label>
+              </div>
+              <div class="small-12 medium-4 columns">
+                <label>Email:
+                  <input type="text" ng-model="email" placeholder="Peep Email" required />
+                </label>
+              </div>
+              <div class="small-12 medium-4 columns">
+                <label>Company:
+                  <input type="text" ng-model="company" placeholder="Company Name" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-4 columns">
+                <label>Work Phone:
+                  <input type="text" ng-model="work_phone" placeholder="Work Phone" />
+                </label>
+              </div>
+              <div class="small-12 medium-4 columns">
+                <label>Mobile Phone:
+                  <input type="text" ng-model="mobile_phone" placeholder="Mobile Phone" />
+                </label>
+              </div>
+              <div class="small-12 medium-4 columns">
+                <label>Home Phone:
+                  <input type="text" ng-model="home_phone" placeholder="Home Phone" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-4 columns">
+                <label>Street Address:
+                  <input type="text" ng-model="street_address" placeholder="Street Address" />
+                </label>
+              </div>
+              <div class="small-12 medium-3 columns">
+                <label>City:
+                  <input type="text" ng-model="city" placeholder="City" />
+                </label>
+              </div>
+              <div class="small-12 medium-2 columns">
+                <label>State:
+                  <input type="text" ng-model="state" placeholder="State" />
+                </label>
+              </div>
+              <div class="small-12 medium-3 columns">
+                <label>Zip Code:
+                  <input type="text" ng-model="zipcode" placeholder="Zip Code" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 large-12 columns">
+                <input type="submit" value="Update Peep" class="button small" />
+                <input ng-click="hide()" type="submit" value="Cancel" class="button alert small" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  <div class="row">
+    <div ng-repeat="peep in peeps" class="medium-6 columns">
+      <!--
+      \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+      \\\\\\\\\\\\\\\\\\ Existing Cards \\\\\\\\\\\\\\\\\\\\\\
+      \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    -->
+    <div class="card">
+      <div class="content">
+        <span class="title">
+          <a ng-click="showPeep(peep)" ng-hide="peepHide">{{peep.name}} +</a>
+        </span>
+        <ul>
+          <li><strong>Company:</strong> {{peep.company}}</li>
+          <li><strong>Email:</strong> {{peep.email}}</li>
+        </ul>
+        <div ng-show="peepShow">
+          <h5>Phone</h5>
+          <ul>
+            <li><strong>Mobile Number:</strong> {{peep.phones[0].mobile_phone}}</li>
+            <li><strong>Work Number:</strong> {{peep.phones[0].work_phone}}</li>
+            <li><strong>Home Number:</strong> {{peep.phones[0].home_phone}}</li>
+          </ul>
+          <h5>Address</h5>
+          <p>
+            {{peep.address[0].street_address}}<br>
+            {{peep.address[0].city}}, {{peep.address[0].state}}, {{peep.address[0].zipcode}}
+          </p>
+        </div>
+      </div>
+      <div class="action" ng-hide="actions">
+        <a class="small secondary button" ng-click="showEditForm(peep)">Edit Peep</a>
+        <a class="small alert button" ng-click="removePeep(peep)">Delete Peep</a>
+      </div>
+    </div>
+  </div>
