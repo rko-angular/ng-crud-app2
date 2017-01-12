@@ -11,7 +11,9 @@ angular.module('myPeeps.peeps', ['ngRoute', 'firebase'])
 
 .controller('PeepsCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 //init Firebase
- var ref = new Firebase('https://mypeepsapp.firebaseio.com/peeps');
+ //var fb2url='https://mypeepsapp.firebaseio.com/peeps';  // orig
+ var fb2url='https://peeps-a49af.firebaseio.com/peeps';  // new
+ var ref = new Firebase(fb2url);
 
  $scope.peeps = $firebaseArray(ref);
 
